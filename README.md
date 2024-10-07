@@ -1,6 +1,6 @@
 # Hw outline
 
-**Your program should be capable of computing the following operations:
+** Your program should be capable of computing the following operations:
 
   * addition: add(n, x) = n + x
   * predecessor: pred(n) = n - 1
