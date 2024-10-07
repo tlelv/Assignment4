@@ -1,6 +1,6 @@
 # Hw outline
 
-__Your program should be capable of computing the following operations:
+Your program should be capable of computing the following operations:
 
   * addition: add(n, x) = n + x
   * predecessor: pred(n) = n - 1
@@ -10,7 +10,7 @@ __Your program should be capable of computing the following operations:
   * boolean signature: sig(n) = 0 is n = 0, 1 otherwise
 * equality: eq(n, x) = 0 if n = x, 1 otherwise
 
-__The program must be written in Haskell and each function can only be defined as a primitive recursive function according to the definition seen in this topic. Therefore, to define your functions (whatever is on the right-hand side of the '='), you may only use:
+The program must be written in Haskell and each function can only be defined as a primitive recursive function according to the definition seen in this topic. Therefore, to define your functions (whatever is on the right-hand side of the '='), you may only use:
 
   * The initial primitive recursive functions
   * The primitive recursive operators
