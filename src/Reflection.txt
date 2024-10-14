@@ -1,0 +1,8 @@
+In this program, we used Clojure to write arithmetic operations using only the formal definition of recursive
+functions. Working as a group, the assignment had helped us learn the computational
+power of recursive functions, such as addition, multiplication, subtraction and exponentials. Using only primitive
+recursive functions was a challenge that we were able to overcome. Working in a group has also given us the experience
+of working as a team and putting our thoughts together to create a joint project. It has also helped us better
+understand GitHub.
+
+ADD RELECTION OF THE TRACE
