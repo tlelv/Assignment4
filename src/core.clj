@@ -4,26 +4,10 @@
             ))
 
 
-
+; function to print and return the value
 (defn println-and-return [x]
   #_=>   (println x)
   #_=>   x)
-
-
-;
-;
-; ______   ______     __     __    __     __     ______   __     __   __   ______
-;/\  == \ /\  == \   /\ \   /\ "-./  \   /\ \   /\__  _\ /\ \   /\ \ / /  /\  ___\
-;\ \  _-/ \ \  __<   \ \ \  \ \ \-./\ \  \ \ \  \/_/\ \/ \ \ \  \ \ \'/   \ \  __\
-; \ \_\    \ \_\ \_\  \ \_\  \ \_\ \ \_\  \ \_\    \ \_\  \ \_\  \ \__|    \ \_____\
-;  \/_/     \/_/ /_/   \/_/   \/_/  \/_/   \/_/     \/_/   \/_/   \/_/      \/_____/
-;
-; ______     ______     ______     __  __     ______     ______     __     ______     __   __
-;/\  == \   /\  ___\   /\  ___\   /\ \/\ \   /\  == \   /\  ___\   /\ \   /\  __ \   /\ "-.\ \
-;\ \  __<   \ \  __\   \ \ \____  \ \ \_\ \  \ \  __<   \ \___  \  \ \ \  \ \ \/\ \  \ \ \-.  \
-; \ \_\ \_\  \ \_____\  \ \_____\  \ \_____\  \ \_\ \_\  \/\_____\  \ \_\  \ \_____\  \ \_\\"\_\
-;  \/_/ /_/   \/_____/   \/_____/   \/_____/   \/_/ /_/   \/_____/   \/_/   \/_____/   \/_/ \/_/
-;
 
 
 ;Primitive recursion
@@ -32,7 +16,6 @@
 
 ;1- Zero function 'z'
 (defn z [n] "0")
-
 
 ;2- Successor function 's'
 (defn s [n] (str \S (eval (first n))))
@@ -78,8 +61,6 @@
 (def b (peano 3))
 
 
-
-
 (def f_mult z)
 (def g_mult (circ radd (pi 2) (pi 3)))
 
@@ -92,22 +73,25 @@
 
 ;predecessor function
 (def rpredecessor #(rho f_predecessor g_predecessor %1))
+
+; Truncated subtraction (x - n, or 0 if x < n)
 (def f_sub (pi 1))
 
+(defn rsub [args]
+      (rho f_sub g_sub args))
+
 (def pred (circ rpredecessor (pi 2)))
-(def g_sub pred)
+(def g_sub pred)                                            ; applies predecessor
 
 
 ;subtraction function (rsub [e f]) = f - e
 (def rsub #(rho f_sub g_sub %1))
 
 
-
-
+; Exponentiation function (n^x)
 (def f_exp (circ s z))
 
 (def g_exp (circ rmult (pi 3) (pi 2)))
-
 
 ;exponent function (rexp [g h]) = h^g
 (def rexp #(rho f_exp g_exp %1))
@@ -121,10 +105,17 @@
 ;equality function
 (def eq (circ rsig (circ radd (circ rsub (pi 1) (pi 2)) (circ rsub (pi 2) (pi 1)))))
 
+; Testing the functions
+(def a (peano 3)) ; representation of 3: "SSS0"
+(def b (peano 2)) ; representation of 2: "SS0"
 
 
-
-
-
-
-
+; Test outputs
+(println "Addition:" (radd [a b])) ; 3 + 2 = 5 (SSSSS0)
+(println "Multiplication:" (rmult [a b])) ; 3 * 2 = 6 (SSSSSS0)
+(println "Exponentiation:" (rexp [a b])) ; 3^2 = 9 (SSSSSSSSS0)
+(println "Subtraction:" (rsub [b a])) ; 2 - 3 = 0 (truncated subtraction)
+(println "Signature (3):" (rsig [a])) ; sig(3) = 1
+(println "Signature (0):" (rsig ["0"])) ; sig(0) = 0
+(println "Equality (3, 3):" (eq [a a])) ; eq(3, 3) = 0
+(println "Equality (3, 2):" (eq [a b])) ; eq(3, 2) = 1
