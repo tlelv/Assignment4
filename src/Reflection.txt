@@ -5,4 +5,24 @@ recursive functions was a challenge that we were able to overcome. Working in a 
 of working as a team and putting our thoughts together to create a joint project. It has also helped us better
 understand GitHub.
 
-ADD RELECTION OF THE TRACE
+The trace output of the program was very helpful to understand what was going on behind the scenes. We decided to look 
+at the trace output of the multiplication function since it is one of the functions we computed manually in class. 
+This is the trace of the multiplication function: 
+    0
+    SS0
+    SS0 
+    SS0
+    SSS0
+    SSSS0
+    SSSS0
+    SS0
+    SSS0
+    SSSS0
+    SSSSS0
+    SSSSSS0
+    SSSSSS0
+    Multiplication: SSSSSS0
+
+By looking at the trace you can see it is performing multiplication using repeated addition. It seems like it first checks to 
+see how many times the first number has been added, and another recursion accumulates the sum in steps and prints intermediate states.
+This trace gives us insight into how the inner mechanics add up individual parts and how these functions build on each other. 
